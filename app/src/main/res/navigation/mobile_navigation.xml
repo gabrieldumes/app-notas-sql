@@ -3,23 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_inicio">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.appnotas13sql.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_inicio"
+        android:name="com.example.appnotas13sql.ui.InicioFragment"
+        android:label="@string/menu_inicio"
+        tools:layout="@layout/fragment_inicio" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.appnotas13sql.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_lixeira"
+        android:name="com.example.appnotas13sql.ui.LixeiraFragment"
+        android:label="@string/menu_lixeira"
+        tools:layout="@layout/fragment_lixeira" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.appnotas13sql.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_configuracoes"
+        android:name="com.example.appnotas13sql.ui.ConfiguracoesFragment"
+        android:label="@string/menu_configuracoes"
+        tools:layout="@layout/fragment_configuracoes" />
+
+    <fragment
+        android:id="@+id/nav_sobre"
+        android:name="com.example.appnotas13sql.ui.SobreFragment"
+        android:label="@string/menu_sobre"
+        tools:layout="@layout/fragment_sobre" />
 </navigation>
