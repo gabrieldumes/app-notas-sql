@@ -1,5 +1,6 @@
 package com.example.appnotas13sql.ui.abas;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,10 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.example.appnotas13sql.R;
+import com.example.appnotas13sql.activity.NovaNotaActivity;
 import com.example.appnotas13sql.adapter.Adapter;
 import com.example.appnotas13sql.helper.ArmazenamentoBancoDeDados;
+import com.example.appnotas13sql.helper.RecyclerItemClickListener;
 import com.example.appnotas13sql.model.Nota;
 
 import java.util.ArrayList;
@@ -34,6 +38,32 @@ public class LembretesFragment extends Fragment {
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerViewLembretes.setLayoutManager(layoutManager);
+
+        recyclerViewLembretes.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        getActivity(),
+                        recyclerViewLembretes,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Nota nota = listaNotas.get(position);
+                                Intent intent = new Intent(getActivity(), NovaNotaActivity.class);
+                                intent.putExtra("nota-selecionada", nota);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                //
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+                        }
+                )
+        );
 
         return view;
     }

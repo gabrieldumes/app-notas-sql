@@ -19,10 +19,10 @@ public class ArmazenamentoBancoDeDados {
             database.execSQL("CREATE TABLE IF NOT EXISTS notas " +
                     "(id INTEGER PRIMARY KEY AUTOINCREMENT, titulo VARCHAR, " +
                     "texto VARCHAR, status INT(1), lembrete INT(1))");
-            /*
-            --> status = 0: nota arquivada / status = 1: nota ativa
-            --> lembrete = 0: lembrete desativado / lembrete = 1: lembrete ativado
-            */
+
+            //status = 0: nota arquivada / status = 1: nota ativa
+            //lembrete = 0: lembrete desativado / lembrete = 1: lembrete ativado
+
         } catch (Exception e) {
             Log.i("INSETO", e.getMessage());
         }
@@ -32,6 +32,15 @@ public class ArmazenamentoBancoDeDados {
         try {
             database.execSQL("INSERT INTO notas(titulo, texto, status, lembrete) VALUES " +
                     "('" + tituloNota + "', '" + textoNota + "', 1, " + lembrete + ")");
+        } catch (Exception e) {
+            Log.i("INSETO", e.getMessage());
+        }
+    }
+
+    public void updateNota(int id, String tituloNota, String textoNota, int lembrete) {
+        try {
+            database.execSQL("UPDATE notas SET titulo='" + tituloNota + "', texto='" + textoNota
+                    + "', lembrete=" + lembrete + " WHERE id=" + id);
         } catch (Exception e) {
             Log.i("INSETO", e.getMessage());
         }
