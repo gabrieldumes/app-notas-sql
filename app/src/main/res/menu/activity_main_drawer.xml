@@ -11,9 +11,9 @@
             android:title="@string/menu_inicio" />
 
         <item
-            android:id="@+id/nav_lixeira"
-            android:icon="@drawable/ic_menu_lixeira"
-            android:title="@string/menu_lixeira" />
+            android:id="@+id/nav_arquivo"
+            android:icon="@drawable/ic_menu_arquivo"
+            android:title="@string/menu_arquivo" />
 
         <item
             android:id="@+id/nav_configuracoes"

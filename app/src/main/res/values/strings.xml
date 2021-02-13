@@ -8,9 +8,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_inicio">Início</string>
-    <string name="menu_lixeira">Lixeira</string>
+    <string name="menu_arquivo">Arquivo</string>
     <string name="menu_configuracoes">Configurações</string>
     <string name="menu_sobre">Sobre</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

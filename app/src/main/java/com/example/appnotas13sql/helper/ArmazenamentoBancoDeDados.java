@@ -45,8 +45,7 @@ public class ArmazenamentoBancoDeDados {
             int indiceColunaTexto = cursor.getColumnIndex("texto");
             int indiceColunaStatus = cursor.getColumnIndex("status");
             int indiceColunaLembrete = cursor.getColumnIndex("lembrete");
-            //cursor.moveToPosition(position);
-            cursor.moveToLast();
+            cursor.moveToPosition(position);
             return new Nota(
                     cursor.getInt(indiceColunaId),
                     cursor.getString(indiceColunaTitulo),
@@ -57,6 +56,16 @@ public class ArmazenamentoBancoDeDados {
         } catch (Exception e) {
             Log.i("INSETO", e.getMessage());
             return new Nota(1111, "Erro", "Erro", 1111, 1111);
+        }
+    }
+
+    public int getQtdNotas(int status) {
+        try {
+            Cursor cursor = database.rawQuery("SELECT * FROM notas WHERE status = " + status, null);
+            return cursor.getCount();
+        } catch (Exception e) {
+            Log.i("INSETO", e.getMessage());
+            return 0;
         }
     }
 }

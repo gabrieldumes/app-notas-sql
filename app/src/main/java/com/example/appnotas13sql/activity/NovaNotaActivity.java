@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.appnotas13sql.R;
 import com.example.appnotas13sql.helper.ArmazenamentoBancoDeDados;
@@ -15,6 +16,7 @@ import com.example.appnotas13sql.helper.ArmazenamentoBancoDeDados;
 public class NovaNotaActivity extends AppCompatActivity {
 
     private EditText editTituloNota, editTextoNota;
+    private ToggleButton toggleLembrete;
     private ArmazenamentoBancoDeDados bancoDeDados;
 
     @Override
@@ -24,6 +26,7 @@ public class NovaNotaActivity extends AppCompatActivity {
 
         editTituloNota = findViewById(R.id.editTituloNota);
         editTextoNota = findViewById(R.id.editTextoNota);
+        toggleLembrete = findViewById(R.id.toggleLembrete);
 
         bancoDeDados = new ArmazenamentoBancoDeDados(this);
     }
@@ -43,7 +46,11 @@ public class NovaNotaActivity extends AppCompatActivity {
         } else if (textoNota.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Campo Nota VAZIO!", Toast.LENGTH_SHORT).show();
         } else {
-            bancoDeDados.addNota(tituloNota, textoNota,0);
+            int lembreteAtivado = 0;
+            if (toggleLembrete.isChecked()) {
+                lembreteAtivado = 1;
+            }
+            bancoDeDados.addNota(tituloNota, textoNota, lembreteAtivado);
             Toast.makeText(getApplicationContext(), "Nota salva com sucesso", Toast.LENGTH_SHORT).show();
             finish();
         }
