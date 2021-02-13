@@ -44,7 +44,7 @@ public class NotasFragment extends Fragment {
         super.onStart();
         listaNotas.clear();
         popularLista();
-        Adapter adapter = new Adapter(this.listaNotas);
+        Adapter adapter = new Adapter(listaNotas);
         recyclerViewNotas.setAdapter(adapter);
     }
 
