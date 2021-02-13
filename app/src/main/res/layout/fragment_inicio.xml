@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".ui.InicioFragment" >
 
+    <!--
     <com.ogaclejapan.smarttablayout.SmartTabLayout
         android:id="@+id/smartTabLayout"
         android:layout_width="match_parent"
@@ -51,4 +52,9 @@
         android:layout_height="match_parent"
         android:layout_below="@id/smartTabLayout"
         />
+        -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewInicioTESTE"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

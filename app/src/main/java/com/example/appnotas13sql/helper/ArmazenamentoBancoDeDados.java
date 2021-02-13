@@ -46,6 +46,14 @@ public class ArmazenamentoBancoDeDados {
         }
     }
 
+    public void updateStatusNota(int id, int status) {
+        try {
+            database.execSQL("UPDATE notas SET status = " + status + " WHERE id=" + id);
+        } catch (Exception e) {
+            Log.i("INSETO", e.getMessage());
+        }
+    }
+
     public Nota getNota(int position, int status) {
         try {
             Cursor cursor = database.rawQuery("SELECT * FROM notas WHERE status = " + status, null);

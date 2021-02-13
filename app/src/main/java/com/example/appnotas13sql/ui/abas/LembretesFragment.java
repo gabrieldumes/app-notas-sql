@@ -1,5 +1,7 @@
 package com.example.appnotas13sql.ui.abas;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -54,7 +56,18 @@ public class LembretesFragment extends Fragment {
 
                             @Override
                             public void onLongItemClick(View view, int position) {
-                                //
+                                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                                dialog.setTitle("Deseja arquivar lembrete?");
+                                dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Nota nota = listaNotas.get(position);
+                                        bancoDeDados.updateStatusNota(nota.getId(), 0);
+                                        onStart();
+                                    }
+                                });
+                                dialog.setNegativeButton("Cancelar", null);
+                                dialog.create().show();
                             }
 
                             @Override
@@ -71,7 +84,6 @@ public class LembretesFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
         listaNotas.clear();
         popularLista();
         Adapter adapter = new Adapter(listaNotas);
