@@ -53,8 +53,33 @@
         android:layout_below="@id/smartTabLayout"
         />
         -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewInicioTESTE"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonAbaNotas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="Notas" />
+
+        <Button
+            android:id="@+id/buttonAbaLembretes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="Lembretes" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameConteudo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
 </LinearLayout>

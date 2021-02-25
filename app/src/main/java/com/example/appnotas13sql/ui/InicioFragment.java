@@ -3,6 +3,7 @@ package com.example.appnotas13sql.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -10,6 +11,8 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 
 import com.example.appnotas13sql.R;
 import com.example.appnotas13sql.adapter.Adapter;
@@ -26,38 +29,32 @@ import java.util.List;
 
 public class InicioFragment extends Fragment {
 
-    //private SmartTabLayout smartTabLayout;
-    //private ViewPager viewPager;
-
-    private RecyclerView recyclerViewInicioTESTE;
-    private List<Nota> listaNotas = new ArrayList<>();
-    private ArmazenamentoBancoDeDados bancoDeDados;
+    private Button buttonAbaNotas, buttonAbaLembretes;
+    private FrameLayout frameConteudo;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
 
-        recyclerViewInicioTESTE = view.findViewById(R.id.recyclerViewInicioTESTE);
+        buttonAbaNotas = view.findViewById(R.id.buttonAbaNotas);
+        buttonAbaLembretes = view.findViewById(R.id.buttonAbaLembretes);
+        frameConteudo = view.findViewById(R.id.frameConteudo);
 
-        bancoDeDados = new ArmazenamentoBancoDeDados(getActivity());
+        buttonAbaNotas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameConteudo, new NotasFragment()).commit();
+            }
+        });
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerViewInicioTESTE.setLayoutManager(layoutManager);
-
-        /*smartTabLayout = view.findViewById(R.id.smartTabLayout);
-        viewPager = view.findViewById(R.id.viewPager);
-
-        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
-                getActivity().getSupportFragmentManager(),
-                FragmentPagerItems.with(getActivity())
-                    .add("Notas", NotasFragment.class)
-                    .add("Lembretes", LembretesFragment.class)
-                .create()
-
-        );
-
-        viewPager.setAdapter(adapter);
-        smartTabLayout.setViewPager(viewPager);*/
+        buttonAbaLembretes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameConteudo, new LembretesFragment()).commit();
+            }
+        });
 
         return view;
     }
@@ -65,16 +62,7 @@ public class InicioFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        listaNotas.clear();
-        popularLista();
-        Adapter adapter = new Adapter(listaNotas);
-        recyclerViewInicioTESTE.setAdapter(adapter);
-    }
-
-    public void popularLista(){
-        for (int i = 0; i < bancoDeDados.getQtdNotas(1); i++) {
-            Nota nota = bancoDeDados.getNota(i, 1);
-            listaNotas.add(nota);
-        }
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frameConteudo, new NotasFragment()).commit();
     }
 }
