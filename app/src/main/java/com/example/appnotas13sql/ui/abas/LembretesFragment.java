@@ -57,12 +57,12 @@ public class LembretesFragment extends Fragment {
                             @Override
                             public void onLongItemClick(View view, int position) {
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-                                dialog.setTitle("Deseja arquivar lembrete?");
+                                dialog.setTitle("Quer excluir o lembrete?");
                                 dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Nota nota = listaNotas.get(position);
-                                        bancoDeDados.updateStatusNota(nota.getId(), 0);
+                                        bancoDeDados.updateStatusNota(nota.getId(), 2);
                                         onStart();
                                     }
                                 });

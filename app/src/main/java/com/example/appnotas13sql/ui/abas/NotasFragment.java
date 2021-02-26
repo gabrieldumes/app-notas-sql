@@ -60,12 +60,12 @@ public class NotasFragment extends Fragment {
                             @Override
                             public void onLongItemClick(View view, int position) {
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-                                dialog.setTitle("Deseja arquivar a nota?");
+                                dialog.setTitle("Quer excluir a nota?");
                                 dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Nota nota = listaNotas.get(position);
-                                        bancoDeDados.updateStatusNota(nota.getId(), 0);
+                                        bancoDeDados.updateStatusNota(nota.getId(), 2);
                                         onStart();
                                     }
                                 });

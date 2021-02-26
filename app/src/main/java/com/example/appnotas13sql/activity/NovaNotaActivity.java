@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -19,6 +21,7 @@ public class NovaNotaActivity extends AppCompatActivity {
 
     private EditText editTituloNota, editTextoNota;
     private ToggleButton toggleLembrete;
+    private Button buttonArquivar;
     private ArmazenamentoBancoDeDados bancoDeDados;
 
     private Nota nota;
@@ -31,6 +34,9 @@ public class NovaNotaActivity extends AppCompatActivity {
         editTituloNota = findViewById(R.id.editTituloNota);
         editTextoNota = findViewById(R.id.editTextoNota);
         toggleLembrete = findViewById(R.id.toggleLembrete);
+        buttonArquivar = findViewById(R.id.buttonArquivar);
+
+        buttonArquivar.setVisibility(View.INVISIBLE);
 
         bancoDeDados = new ArmazenamentoBancoDeDados(this);
 
@@ -46,6 +52,15 @@ public class NovaNotaActivity extends AppCompatActivity {
             editTituloNota.setText(nota.getTitulo());
             editTextoNota.setText(nota.getTexto());
             if (nota.getLembrete() == 1) toggleLembrete.setChecked(true);
+            buttonArquivar.setVisibility(View.VISIBLE);
+            buttonArquivar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    bancoDeDados.updateStatusNota(nota.getId(), 0);
+                    Toast.makeText(NovaNotaActivity.this, "Nota arquivada", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            });
         }
     }
 

@@ -20,7 +20,7 @@ public class ArmazenamentoBancoDeDados {
                     "(id INTEGER PRIMARY KEY AUTOINCREMENT, titulo VARCHAR, " +
                     "texto VARCHAR, status INT(1), lembrete INT(1))");
 
-            //status = 0: nota arquivada / status = 1: nota ativa
+            //status = 0: nota arquivada / status = 1: nota ativa / status = 2: excluida
             //lembrete = 0: lembrete desativado / lembrete = 1: lembrete ativado
 
         } catch (Exception e) {

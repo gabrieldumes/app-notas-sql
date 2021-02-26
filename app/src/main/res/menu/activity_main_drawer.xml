@@ -16,6 +16,11 @@
             android:title="@string/menu_arquivo" />
 
         <item
+            android:id="@+id/nav_lixeira"
+            android:icon="@drawable/ic_menu_lixeira"
+            android:title="@string/menu_lixeira" />
+
+        <item
             android:id="@+id/nav_configuracoes"
             android:icon="@drawable/ic_menu_configuracoes"
             android:title="@string/menu_configuracoes" />
