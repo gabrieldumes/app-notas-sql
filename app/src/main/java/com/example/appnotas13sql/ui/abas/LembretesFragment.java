@@ -58,7 +58,7 @@ public class LembretesFragment extends Fragment {
                             public void onLongItemClick(View view, int position) {
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                                 dialog.setTitle("Quer excluir o lembrete?");
-                                dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                dialog.setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Nota nota = listaNotas.get(position);

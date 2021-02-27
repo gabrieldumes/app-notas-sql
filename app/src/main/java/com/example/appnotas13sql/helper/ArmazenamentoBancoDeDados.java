@@ -85,4 +85,12 @@ public class ArmazenamentoBancoDeDados {
             return 0;
         }
     }
+
+    public void deleteNota(int id) {
+        try {
+            database.execSQL("DELETE FROM notas WHERE id = " + id);
+        } catch (Exception e) {
+            Log.i("INSETO", e.getMessage());
+        }
+    }
 }
