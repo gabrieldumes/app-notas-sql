@@ -12,6 +12,15 @@
     <string name="menu_lixeira">Lixeira</string>
     <string name="menu_configuracoes">Configurações</string>
     <string name="menu_sobre">Sobre</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Activity Filtrar-->
+    <string name="topicoOrdenar">Ordenar por:</string>
+    <string name="radioMaisRecentes">Mais recentes</string>
+    <string name="radioMaisAntigas">Mais antigas</string>
+    <string name="topicoPesquisa">Pesquisa:</string>
+    <string name="hintPesquisa">Digite uma palavra</string>
+    <string name="topicoAplicarFiltrosEm">Aplicar filtros em:</string>
+    <string name="checkNotas">Notas</string>
+    <string name="checkLembretes">Lembretes</string>
+    <string name="buttonAplicarFiltros">Aplicar filtros</string>
 </resources>
