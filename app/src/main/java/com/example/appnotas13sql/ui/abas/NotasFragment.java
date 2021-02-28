@@ -21,6 +21,7 @@ import com.example.appnotas13sql.R;
 import com.example.appnotas13sql.activity.NovaNotaActivity;
 import com.example.appnotas13sql.adapter.Adapter;
 import com.example.appnotas13sql.helper.ArmazenamentoBancoDeDados;
+import com.example.appnotas13sql.helper.ArmazenamentoPreferencias;
 import com.example.appnotas13sql.helper.RecyclerItemClickListener;
 import com.example.appnotas13sql.model.Nota;
 
@@ -32,6 +33,7 @@ public class NotasFragment extends Fragment {
     private RecyclerView recyclerViewNotas;
     private List<Nota> listaNotas = new ArrayList<>();
     private ArmazenamentoBancoDeDados bancoDeDados;
+    private ArmazenamentoPreferencias preferencias;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class NotasFragment extends Fragment {
         recyclerViewNotas = view.findViewById(R.id.recyclerViewNotas);
 
         bancoDeDados = new ArmazenamentoBancoDeDados(getActivity());
+        preferencias = new ArmazenamentoPreferencias(getActivity());
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerViewNotas.setLayoutManager(layoutManager);
@@ -94,10 +97,41 @@ public class NotasFragment extends Fragment {
     }
 
     public void popularLista() {
-        //dessa forma o primeiro item da lista será a nota mais antiga
-        for (int i = 0; i < bancoDeDados.getQtdNotas(1); i++) {
-            Nota nota = bancoDeDados.getNota(i, 1);
-            if (nota.getLembrete() == 0) listaNotas.add(nota);
+        if (preferencias.isFiltroEmNotas()) {
+            String pesquisa = preferencias.getPesquisa();
+            switch (preferencias.getOrdenacao()) {
+                case R.id.radioMaisRecentes:
+                    for (int i = bancoDeDados.getQtdNotas(1); i > 0; i--) {
+                        Nota nota = bancoDeDados.getNota(i, 1);
+                        if (!pesquisa.equals("")) {
+                            if (nota.getTexto().toLowerCase().contains(pesquisa) ||
+                                    nota.getTitulo().toLowerCase().contains(pesquisa)) {
+                                if (nota.getLembrete() == 0) listaNotas.add(nota);
+                            }
+                        } else {
+                            if (nota.getLembrete() == 0) listaNotas.add(nota);
+                        }
+                    }
+                    break;
+                case R.id.radioMaisAntigas:
+                    for (int i = 0; i < bancoDeDados.getQtdNotas(1); i++) {
+                        Nota nota = bancoDeDados.getNota(i, 1);
+                        if (!pesquisa.equals("")) {
+                            if (nota.getTexto().toLowerCase().contains(pesquisa) ||
+                                    nota.getTitulo().toLowerCase().contains(pesquisa)) {
+                                if (nota.getLembrete() == 0) listaNotas.add(nota);
+                            }
+                        } else {
+                            if (nota.getLembrete() == 0) listaNotas.add(nota);
+                        }
+                    }
+            }
+        } else {
+            //dessa forma o primeiro item da lista será a nota mais RECENTE
+            for (int i = bancoDeDados.getQtdNotas(1); i > 0; i--) {
+                Nota nota = bancoDeDados.getNota(i, 1);
+                if (nota.getLembrete() == 0) listaNotas.add(nota);
+            }
         }
     }
 }

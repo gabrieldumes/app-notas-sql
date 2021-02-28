@@ -19,11 +19,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appnotas13sql.R;
 import com.example.appnotas13sql.activity.FiltrosActivity;
 import com.example.appnotas13sql.adapter.Adapter;
 import com.example.appnotas13sql.helper.ArmazenamentoBancoDeDados;
+import com.example.appnotas13sql.helper.ArmazenamentoPreferencias;
 import com.example.appnotas13sql.model.Nota;
 import com.example.appnotas13sql.ui.abas.LembretesFragment;
 import com.example.appnotas13sql.ui.abas.NotasFragment;
@@ -37,7 +40,8 @@ import java.util.List;
 public class InicioFragment extends Fragment {
 
     private Button buttonAbaNotas, buttonAbaLembretes;
-    private FrameLayout frameConteudo;
+    private TextView textPesquisa;
+    private ArmazenamentoPreferencias preferencias;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,7 +55,9 @@ public class InicioFragment extends Fragment {
 
         buttonAbaNotas = view.findViewById(R.id.buttonAbaNotas);
         buttonAbaLembretes = view.findViewById(R.id.buttonAbaLembretes);
-        frameConteudo = view.findViewById(R.id.frameConteudo);
+        textPesquisa = view.findViewById(R.id.textPesquisa);
+
+        preferencias = new ArmazenamentoPreferencias(getActivity());
 
         buttonAbaNotas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +83,12 @@ public class InicioFragment extends Fragment {
         super.onStart();
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frameConteudo, new NotasFragment()).commit();
+
+        textPesquisa.setVisibility(View.GONE);
+        if (!preferencias.getPesquisa().equals("")) {
+            textPesquisa.setVisibility(View.VISIBLE);
+            textPesquisa.setText("Pesquisa: " + preferencias.getPesquisa());
+        }
     }
 
     @Override
@@ -87,7 +99,9 @@ public class InicioFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        startActivity(new Intent(getActivity(), FiltrosActivity.class));
+        if (item.getItemId() == R.id.menu_filtrar) {
+            startActivity(new Intent(getActivity(), FiltrosActivity.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 }

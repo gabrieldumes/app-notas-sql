@@ -23,4 +23,5 @@
     <string name="checkNotas">Notas</string>
     <string name="checkLembretes">Lembretes</string>
     <string name="buttonAplicarFiltros">Aplicar filtros</string>
+    <string name="textResetarFiltros">Resetar</string>
 </resources>

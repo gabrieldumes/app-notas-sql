@@ -39,7 +39,7 @@ public class ArmazenamentoPreferencias {
     }
 
     public String getPesquisa() {
-        return preferences.getString(CHAVE_PESQUISA, "");
+        return preferences.getString(CHAVE_PESQUISA, "").toLowerCase();
     }
 
     public boolean isFiltroEmNotas() {

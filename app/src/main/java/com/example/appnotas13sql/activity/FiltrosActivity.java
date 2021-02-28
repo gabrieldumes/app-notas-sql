@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appnotas13sql.R;
@@ -24,6 +25,7 @@ public class FiltrosActivity extends AppCompatActivity {
     private EditText editPesquisa;
     private CheckBox checkNotas, checkLembretes;
     private Button buttonAplicarFiltros;
+    private TextView textResetarFiltros;
 
     private ArmazenamentoPreferencias preferencias;
 
@@ -39,6 +41,7 @@ public class FiltrosActivity extends AppCompatActivity {
         checkNotas = findViewById(R.id.checkNotas);
         checkLembretes = findViewById(R.id.checkLembretes);
         buttonAplicarFiltros = findViewById(R.id.buttonAplicarFiltros);
+        textResetarFiltros = findViewById(R.id.textResetarFiltros);
 
         preferencias = new ArmazenamentoPreferencias(getApplicationContext());
 
@@ -62,6 +65,17 @@ public class FiltrosActivity extends AppCompatActivity {
             }
         });
 
+        textResetarFiltros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                preferencias.setFiltros(R.id.radioMaisRecentes, "", false, false);
+                radioGroupOrdenar.check(R.id.radioMaisRecentes);
+                editPesquisa.setText("");
+                checkNotas.setChecked(false);
+                checkLembretes.setChecked(false);
+                Toast.makeText(FiltrosActivity.this, "Filtros resetados", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void recuperarFiltros() {
