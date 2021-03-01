@@ -10,6 +10,9 @@
 
     <color name="colorPrimary">#121212</color>
     <color name="colorPrimaryLight">#191919</color>
-    <!--<color name="cor_nota_teste">#E3E3E3</color>-->
     <color name="cor_nota_teste">#E3E3E3</color>
+
+    <color name="cor_nota_amarelo">#FFF9C4</color>
+    <color name="cor_nota_verde">#CEEBD5</color>
+    <color name="cor_nota_cinza">#E3E3E3</color>
 </resources>

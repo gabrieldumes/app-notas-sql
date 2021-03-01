@@ -34,7 +34,7 @@
     <string name="topicoCorFundo">Cor de fundo</string>
     <string name="corAmarelo">Amarelo</string>
     <string name="corVerde">Verde</string>
-    <string name="corBranco">Branco</string>
+    <string name="corCinza">Cinza</string>
     <string name="topicoExportarNotas">EXPORTAR NOTAS</string>
     <string name="buttonExportarNotas">Exportar notas</string>
     <string name="topicoFiltros">FILTROS</string>

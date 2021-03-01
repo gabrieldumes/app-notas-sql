@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cor_nota_teste"
+    android:background="@color/cor_nota_verde"
     tools:context=".activity.NovaNotaActivity">
 
     <ScrollView

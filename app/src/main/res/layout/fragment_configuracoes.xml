@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <SeekBar
-            android:id="@+id/seekBar"
+            android:id="@+id/seekTamanhoFonte"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -64,8 +64,8 @@
             android:layout_marginTop="4dp"
             android:text="@string/tamanhoPequeno"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@+id/seekBar"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+            app:layout_constraintStart_toStartOf="@+id/seekTamanhoFonte"
+            app:layout_constraintTop_toBottomOf="@+id/seekTamanhoFonte" />
 
         <TextView
             android:id="@+id/textView8"
@@ -76,7 +76,7 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/textView9"
             app:layout_constraintStart_toEndOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+            app:layout_constraintTop_toBottomOf="@+id/seekTamanhoFonte" />
 
         <TextView
             android:id="@+id/textView9"
@@ -85,8 +85,8 @@
             android:layout_marginTop="4dp"
             android:text="@string/tamanhoGrande"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/seekBar"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+            app:layout_constraintEnd_toEndOf="@+id/seekTamanhoFonte"
+            app:layout_constraintTop_toBottomOf="@+id/seekTamanhoFonte" />
 
         <TextView
             android:id="@+id/textView10"
@@ -104,7 +104,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/radioGroupCorFundoNotas"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -112,32 +112,39 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
-            android:checkedButton="@id/radioButton"
+            android:checkedButton="@id/radioCorAmarelo"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10">
 
             <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/radioCorAmarelo"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/background_radio_amarelo"
                 android:text="@string/corAmarelo" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/radioCorVerde"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/background_radio_verde"
                 android:text="@string/corVerde" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/radioCorCinza"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:text="@string/corBranco" />
+                android:background="@drawable/background_radio_cinza"
+                android:text="@string/corCinza" />
         </RadioGroup>
 
         <TextView
@@ -153,10 +160,10 @@
             android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupCorFundoNotas" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonExportarNotas"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -182,10 +189,10 @@
             android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonExportarNotas" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/textConfigResetarFiltros"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -212,10 +219,10 @@
             android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+            app:layout_constraintTop_toBottomOf="@+id/textConfigResetarFiltros" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/textDeletarDados"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -242,10 +249,10 @@
             android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            app:layout_constraintTop_toBottomOf="@+id/textDeletarDados" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/textRestaurarConfiguracoes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
