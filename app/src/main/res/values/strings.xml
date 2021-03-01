@@ -24,4 +24,23 @@
     <string name="checkLembretes">Lembretes</string>
     <string name="buttonAplicarFiltros">Aplicar filtros</string>
     <string name="textResetarFiltros">Resetar</string>
+
+    <!--Fragment Configurações-->
+    <string name="topicoConfiguracoesNota">CONFIGURAÇÕES DA NOTA</string>
+    <string name="topicoTamanhoFonte">Tamanho da fonte</string>
+    <string name="tamanhoPequeno">Pequeno</string>
+    <string name="tamanhoPadrao">Padrão</string>
+    <string name="tamanhoGrande">Grande</string>
+    <string name="topicoCorFundo">Cor de fundo</string>
+    <string name="corAmarelo">Amarelo</string>
+    <string name="corVerde">Verde</string>
+    <string name="corBranco">Branco</string>
+    <string name="topicoExportarNotas">EXPORTAR NOTAS</string>
+    <string name="buttonExportarNotas">Exportar notas</string>
+    <string name="topicoFiltros">FILTROS</string>
+    <string name="textConfigResetarFiltros">Resetar filtros</string>
+    <string name="topicoDados">DADOS</string>
+    <string name="textDeletarDados">Deletar dados</string>
+    <string name="topicoConfiguracoes">CONFIGURAÇÕES</string>
+    <string name="textRestaurarConfiguracoes">Restaurar configurações</string>
 </resources>

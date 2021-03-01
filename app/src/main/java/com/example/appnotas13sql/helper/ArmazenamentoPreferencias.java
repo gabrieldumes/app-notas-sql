@@ -49,4 +49,6 @@ public class ArmazenamentoPreferencias {
     public boolean isFiltroEmLembretes() {
         return preferences.getBoolean(CHAVE_FILTRO_EM_LEMBRETES, false);
     }
+
+    //------> CONFIGURAÇÕES <------
 }
