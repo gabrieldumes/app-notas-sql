@@ -13,6 +13,10 @@
     <string name="menu_configuracoes">Configurações</string>
     <string name="menu_sobre">Sobre</string>
 
+    <!--Activity Nova Nota-->
+    <string name="toggle_off"> </string>
+    <string name="toggle_on"> </string>
+
     <!--Activity Filtrar-->
     <string name="topicoOrdenar">Ordenar por:</string>
     <string name="radioMaisRecentes">Mais recentes</string>

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardViewItemLista"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginRight="10dp"
     app:cardBackgroundColor="@color/cor_nota_verde"
     app:cardCornerRadius="5dp"
     app:cardElevation="3dp">
@@ -12,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="15dp">
 
         <TextView
             android:id="@+id/textRecyclerTitulo"
@@ -20,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="Título"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -28,6 +32,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nota"
-            android:textSize="16sp" />
+            android:textSize="17sp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

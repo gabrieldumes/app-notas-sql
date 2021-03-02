@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -40,6 +41,8 @@ public class NovaNotaActivity extends AppCompatActivity {
 
         bancoDeDados = new ArmazenamentoBancoDeDados(this);
 
+        toggleLembrete.setBackground(getResources().getDrawable(R.drawable.ic_lembrete_desativado_white));
+
         try {
             Bundle bundle = getIntent().getExtras();
             this.nota = (Nota) bundle.getSerializable("nota-selecionada");
@@ -51,7 +54,10 @@ public class NovaNotaActivity extends AppCompatActivity {
         if (nota != null) {
             editTituloNota.setText(nota.getTitulo());
             editTextoNota.setText(nota.getTexto());
-            if (nota.getLembrete() == 1) toggleLembrete.setChecked(true);
+            if (nota.getLembrete() == 1) {
+                toggleLembrete.setChecked(true);
+                toggleLembrete.setBackground(getResources().getDrawable(R.drawable.ic_lembrete_ativado_white));
+            }
             buttonArquivar.setVisibility(View.VISIBLE);
             buttonArquivar.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -62,6 +68,19 @@ public class NovaNotaActivity extends AppCompatActivity {
                 }
             });
         }
+
+        toggleLembrete.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (toggleLembrete.isChecked()) {
+                    toggleLembrete.setBackground(getResources().getDrawable(R.drawable.ic_lembrete_ativado_white));
+                    Toast.makeText(NovaNotaActivity.this, "Lembrete ativado", Toast.LENGTH_SHORT).show();
+                } else {
+                    toggleLembrete.setBackground(getResources().getDrawable(R.drawable.ic_lembrete_desativado_white));
+                    Toast.makeText(NovaNotaActivity.this, "Lembrete desativado", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override

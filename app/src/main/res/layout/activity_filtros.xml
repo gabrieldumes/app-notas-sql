@@ -33,6 +33,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
+            android:checkedButton="@id/radioMaisRecentes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -40,13 +41,13 @@
             <RadioButton
                 android:id="@+id/radioMaisRecentes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:text="@string/radioMaisRecentes" />
 
             <RadioButton
                 android:id="@+id/radioMaisAntigas"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:text="@string/radioMaisAntigas" />
         </RadioGroup>
 
@@ -97,7 +98,7 @@
         <CheckBox
             android:id="@+id/checkNotas"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="8dp"
@@ -111,7 +112,7 @@
         <CheckBox
             android:id="@+id/checkLembretes"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp"
             android:layout_marginEnd="24dp"
