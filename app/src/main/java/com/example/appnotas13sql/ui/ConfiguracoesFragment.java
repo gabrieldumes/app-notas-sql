@@ -12,16 +12,19 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appnotas13sql.R;
+import com.example.appnotas13sql.helper.ArmazenamentoPreferencias;
 
 public class ConfiguracoesFragment extends Fragment {
 
     private SeekBar seekTamanhoFonte;
     private RadioGroup radioGroupCorFundoNotas;
-    private RadioButton radioCorAmarelo, radioCorVerde, radioCorCinza;
     private Button buttonExportarNotas;
     private TextView textConfigResetarFiltros, textDeletarDados, textRestaurarConfiguracoes;
+
+    private ArmazenamentoPreferencias preferencias;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -29,14 +32,37 @@ public class ConfiguracoesFragment extends Fragment {
 
         seekTamanhoFonte = view.findViewById(R.id.seekTamanhoFonte);
         radioGroupCorFundoNotas = view.findViewById(R.id.radioGroupCorFundoNotas);
-        radioCorAmarelo = view.findViewById(R.id.radioCorAmarelo);
-        radioCorVerde = view.findViewById(R.id.radioCorVerde);
-        radioCorCinza = view.findViewById(R.id.radioCorCinza);
         buttonExportarNotas = view.findViewById(R.id.buttonExportarNotas);
         textConfigResetarFiltros = view.findViewById(R.id.textConfigResetarFiltros);
         textDeletarDados = view.findViewById(R.id.textDeletarDados);
         textRestaurarConfiguracoes = view.findViewById(R.id.textRestaurarConfiguracoes);
 
+        preferencias = new ArmazenamentoPreferencias(getActivity());
+
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        seekTamanhoFonte.setProgress((int) preferencias.getTamanhoFonte("progress"));
+        radioGroupCorFundoNotas.check(preferencias.getRadioIdCorNota());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        switch (seekTamanhoFonte.getProgress()) {
+            case 0:
+                preferencias.setTamanhoFonte(16, 13, 0);
+                break;
+            case 1:
+                preferencias.setTamanhoFonte(20, 17, 1);
+                break;
+            case 2:
+                preferencias.setTamanhoFonte(24, 20, 2);
+                break;
+        }
+        preferencias.setRadioIdCorNota(radioGroupCorFundoNotas.getCheckedRadioButtonId());
     }
 }

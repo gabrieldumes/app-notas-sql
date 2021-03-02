@@ -18,6 +18,11 @@ public class ArmazenamentoPreferencias {
     private final String CHAVE_FILTRO_EM_NOTAS = "em_notas";
     private final String CHAVE_FILTRO_EM_LEMBRETES = "em_lembretes";
 
+    private final String CHAVE_TAMANHO_TITULO = "tamanho_titulo";
+    private final String CHAVE_TAMANHO_TEXTO = "tamanho_texto";
+    private final String CHAVE_SEEK_PROGRESS = "seek_progress";
+    private final String CHAVE_COR_NOTA = "cor_nota";
+
     public ArmazenamentoPreferencias(Context context) {
         this.context = context;
         preferences = context.getSharedPreferences(ARQUIVO_PREFERENCIAS, 0);
@@ -51,4 +56,43 @@ public class ArmazenamentoPreferencias {
     }
 
     //------> CONFIGURAÇÕES <------
+
+    public void setTamanhoFonte(float titulo, float texto, float progress) {
+        editor.putFloat(CHAVE_TAMANHO_TITULO, titulo);
+        editor.putFloat(CHAVE_TAMANHO_TEXTO, texto);
+        editor.putFloat(CHAVE_SEEK_PROGRESS, progress);
+        editor.commit();
+    }
+
+    public float getTamanhoFonte(String opcao) {
+        switch (opcao) {
+            case "titulo":
+                return preferences.getFloat(CHAVE_TAMANHO_TITULO, 20);
+            case "texto":
+                return preferences.getFloat(CHAVE_TAMANHO_TEXTO, 17);
+            case "progress":
+                return preferences.getFloat(CHAVE_SEEK_PROGRESS, 1);
+            default:
+                return 5;
+        }
+    }
+
+    public void setRadioIdCorNota(int radioId) {
+        editor.putInt(CHAVE_COR_NOTA, radioId).commit();
+    }
+
+    public int getRadioIdCorNota() {
+        return preferences.getInt(CHAVE_COR_NOTA, R.id.radioCorAmarelo);
+    }
+
+    public int getCorNota() {
+        switch (preferences.getInt(CHAVE_COR_NOTA, R.id.radioCorAmarelo)) {
+            case R.id.radioCorVerde:
+                return R.color.cor_nota_verde;
+            case R.id.radioCorCinza:
+                return R.color.cor_nota_cinza;
+            default:
+                return R.color.cor_nota_amarelo;
+        }
+    }
 }

@@ -11,6 +11,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appnotas13sql.R;
+import com.example.appnotas13sql.helper.ArmazenamentoPreferencias;
 import com.example.appnotas13sql.model.Nota;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     private List<Nota> listaNotas;
     private Context context;
+    private ArmazenamentoPreferencias preferencias;
 
     public Adapter(List<Nota> listaNotas) {
         this.listaNotas = listaNotas;
@@ -35,9 +37,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Nota nota = listaNotas.get(position);
-        holder.textTitulo.setText(nota.getTitulo());
-        holder.textNota.setText(nota.getTexto());
+        preferencias = new ArmazenamentoPreferencias(context);
+        holder.textTitulo.setTextSize(preferencias.getTamanhoFonte("titulo"));
+        holder.textNota.setTextSize(preferencias.getTamanhoFonte("texto"));
+        holder.cardView.setCardBackgroundColor(context.getResources().getColor(preferencias.getCorNota()));
 
         if (position == listaNotas.size() - 1) {
             ViewGroup.MarginLayoutParams layoutParams =
@@ -58,6 +61,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
                     dpToPixel(0)
             );
         }
+
+        Nota nota = listaNotas.get(position);
+        holder.textTitulo.setText(nota.getTitulo());
+        holder.textNota.setText(nota.getTexto());
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.appnotas13sql.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -16,14 +17,17 @@ import android.widget.ToggleButton;
 
 import com.example.appnotas13sql.R;
 import com.example.appnotas13sql.helper.ArmazenamentoBancoDeDados;
+import com.example.appnotas13sql.helper.ArmazenamentoPreferencias;
 import com.example.appnotas13sql.model.Nota;
 
 public class NovaNotaActivity extends AppCompatActivity {
 
+    private ConstraintLayout constraintLayoutNovaNota;
     private EditText editTituloNota, editTextoNota;
     private ToggleButton toggleLembrete;
     private Button buttonArquivar;
     private ArmazenamentoBancoDeDados bancoDeDados;
+    private ArmazenamentoPreferencias preferencias;
 
     private Nota nota;
 
@@ -32,6 +36,7 @@ public class NovaNotaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nova_nota);
 
+        constraintLayoutNovaNota = findViewById(R.id.constraintLayoutNovaNota);
         editTituloNota = findViewById(R.id.editTituloNota);
         editTextoNota = findViewById(R.id.editTextoNota);
         toggleLembrete = findViewById(R.id.toggleLembrete);
@@ -40,6 +45,11 @@ public class NovaNotaActivity extends AppCompatActivity {
         buttonArquivar.setVisibility(View.INVISIBLE);
 
         bancoDeDados = new ArmazenamentoBancoDeDados(this);
+        preferencias = new ArmazenamentoPreferencias(this);
+
+        constraintLayoutNovaNota.setBackgroundColor(getResources().getColor(preferencias.getCorNota()));
+        editTituloNota.setTextSize(preferencias.getTamanhoFonte("titulo"));
+        editTextoNota.setTextSize(preferencias.getTamanhoFonte("texto"));
 
         toggleLembrete.setBackground(getResources().getDrawable(R.drawable.ic_lembrete_desativado_white));
 
