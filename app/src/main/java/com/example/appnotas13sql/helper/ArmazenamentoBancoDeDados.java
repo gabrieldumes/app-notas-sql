@@ -93,4 +93,12 @@ public class ArmazenamentoBancoDeDados {
             Log.i("INSETO", e.getMessage());
         }
     }
+
+    public void excluirTodosOsDados() {
+        try {
+            database.execSQL("DROP TABLE notas");
+        } catch (Exception e) {
+            Log.i("INSETO", e.getMessage());
+        }
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.appnotas13sql.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appnotas13sql.R;
+import com.example.appnotas13sql.activity.FiltrosActivity;
+import com.example.appnotas13sql.helper.ArmazenamentoBancoDeDados;
 import com.example.appnotas13sql.helper.ArmazenamentoPreferencias;
 
 public class ConfiguracoesFragment extends Fragment {
@@ -25,6 +29,7 @@ public class ConfiguracoesFragment extends Fragment {
     private TextView textConfigResetarFiltros, textDeletarDados, textRestaurarConfiguracoes;
 
     private ArmazenamentoPreferencias preferencias;
+    private ArmazenamentoBancoDeDados bancoDeDados;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,6 +43,44 @@ public class ConfiguracoesFragment extends Fragment {
         textRestaurarConfiguracoes = view.findViewById(R.id.textRestaurarConfiguracoes);
 
         preferencias = new ArmazenamentoPreferencias(getActivity());
+        bancoDeDados = new ArmazenamentoBancoDeDados(getActivity());
+
+        textConfigResetarFiltros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                preferencias.setFiltros(R.id.radioMaisRecentes, "", false, false);
+                Toast.makeText(getActivity(), "Filtros resetados", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        textDeletarDados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                dialog.setTitle("Quer excluir todos os dados permanentemente?");
+                dialog.setMessage("Esta ação não pode ser desfeita");
+                dialog.setCancelable(false);
+                dialog.setPositiveButton("Exluir", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //bancoDeDados.excluirTodosOsDados();
+                        Toast.makeText(getActivity(), "Dados excluídos", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialog.setNegativeButton("Cancelar", null);
+                dialog.create().show();
+            }
+        });
+
+        textRestaurarConfiguracoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                preferencias.setTamanhoFonte(20, 17, 1);
+                preferencias.setRadioIdCorNota(R.id.radioCorAmarelo);
+                onStart();
+                Toast.makeText(getActivity(), "Configurações restauradas", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
     }
