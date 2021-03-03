@@ -24,6 +24,12 @@
         tools:layout="@layout/fragment_lixeira" />
 
     <fragment
+        android:id="@+id/nav_estatisticas"
+        android:name="com.example.appnotas13sql.ui.EstatisticasFragment"
+        android:label="@string/menu_estatisticas"
+        tools:layout="@layout/fragment_estatisticas" />
+
+    <fragment
         android:id="@+id/nav_configuracoes"
         android:name="com.example.appnotas13sql.ui.ConfiguracoesFragment"
         android:label="@string/menu_configuracoes"

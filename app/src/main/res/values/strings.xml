@@ -10,6 +10,7 @@
     <string name="menu_inicio">Início</string>
     <string name="menu_arquivo">Arquivo</string>
     <string name="menu_lixeira">Lixeira</string>
+    <string name="menu_estatisticas">Estatísticas</string>
     <string name="menu_configuracoes">Configurações</string>
     <string name="menu_sobre">Sobre</string>
 
