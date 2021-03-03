@@ -30,6 +30,14 @@
     <string name="buttonAplicarFiltros">Aplicar filtros</string>
     <string name="textResetarFiltros">Resetar</string>
 
+    <!--Fragment Estatísticas-->
+    <string name="textStatsTotalNotas">Total de notas:</string>
+    <string name="textStatsNotasAtivas">Notas:</string>
+    <string name="textStatsLembretes">Lembretes:</string>
+    <string name="textStatsArquivadas">Notas arquivadas:</string>
+    <string name="textStatsLixeira">Lixeira:</string>
+    <string name="textZero">0</string>
+
     <!--Fragment Configurações-->
     <string name="topicoConfiguracoesNota">CONFIGURAÇÕES DA NOTA</string>
     <string name="topicoTamanhoFonte">Tamanho da fonte</string>

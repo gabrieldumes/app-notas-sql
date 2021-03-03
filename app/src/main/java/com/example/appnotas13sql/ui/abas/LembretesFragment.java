@@ -100,7 +100,7 @@ public class LembretesFragment extends Fragment {
             switch (preferencias.getOrdenacao()) {
                 case R.id.radioMaisRecentes:
                     for (int i = bancoDeDados.getQtdNotas(1); i > 0; i--) {
-                        Nota nota = bancoDeDados.getNota(i, 1);
+                        Nota nota = bancoDeDados.getNota(i - 1, 1);
                         if (!pesquisa.equals("")) {
                             if (nota.getTexto().toLowerCase().contains(pesquisa) ||
                                     nota.getTitulo().toLowerCase().contains(pesquisa)) {
@@ -127,7 +127,7 @@ public class LembretesFragment extends Fragment {
         } else {
             //dessa forma o primeiro item da lista será a nota mais RECENTE
             for (int i = bancoDeDados.getQtdNotas(1); i > 0; i--) {
-                Nota nota = bancoDeDados.getNota(i, 1);
+                Nota nota = bancoDeDados.getNota(i - 1, 1);
                 if (nota.getLembrete() == 1) listaNotas.add(nota);
             }
         }
