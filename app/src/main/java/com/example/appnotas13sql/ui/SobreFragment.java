@@ -17,7 +17,7 @@ public class SobreFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        String descricao = "O app Notas 1.3 permite criar, editar ou remover notas " +
+        String descricao = "O app Notas 1.3 permite criar, editar oueremover notas " +
                 "e lembretes de forma simples. Algumas outras funcionalidadas são: " +
                 "Arquivar e restaurar notas; Aplicar filtros e buscas; Ver estatísticas; " +
                 "Alterar configurações do app";
@@ -26,6 +26,7 @@ public class SobreFragment extends Fragment {
         versao.setTitle("Versão 1.3");
 
         View view = new AboutPage(getActivity())
+                .setImage(R.drawable.logo_sobre2)
                 .setDescription(descricao)
 
                 .addGroup("Entre em contato")
@@ -33,8 +34,12 @@ public class SobreFragment extends Fragment {
                 .addWebsite("https://github.com/gabrieldumes/app-notas-sql", "Acesse o site")
 
                 .addGroup("Redes sociais")
-                .addGitHub("gabrieldumes", "GitHub")
                 .addFacebook("notas1.3", "Facebook")
+                .addInstagram("notas1.3", "Instagram")
+                .addTwitter("notas1.3", "Twitter")
+                .addYoutube("notas1.3", "YouTube")
+                .addGitHub("gabrieldumes", "GitHub")
+                .addPlayStore("notas1.3", "Play Store")
                 .addItem(versao)
                 .create();
         return view;
