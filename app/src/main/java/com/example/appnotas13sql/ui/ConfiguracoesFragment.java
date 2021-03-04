@@ -45,6 +45,13 @@ public class ConfiguracoesFragment extends Fragment {
         preferencias = new ArmazenamentoPreferencias(getActivity());
         bancoDeDados = new ArmazenamentoBancoDeDados(getActivity());
 
+        buttonExportarNotas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Funcionalidade indisponível", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         textConfigResetarFiltros.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
