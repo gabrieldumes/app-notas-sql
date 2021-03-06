@@ -49,7 +49,6 @@ public class ArquivoFragment extends Fragment {
                             public void onItemClick(View view, int position) {
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                                 dialog.setTitle("Quer desarquivar a nota?");
-                                dialog.setMessage("");
                                 dialog.setPositiveButton("Desarquivar", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
