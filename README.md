@@ -15,6 +15,15 @@
 [![Sobre][sobre_small]][sobre]
 [![Cor alterada][cor_alterada_small]][cor_alterada]
 
+## Funcionalidades:
+
+* Criar, editar e ver notas
+* Arquivar, desarquiviar, remover e restaurar notas
+* Aplicar filtros e pesquisar notas
+* Ver estatísticas
+* Alterar configurações como tamanho de fonte e cor padrão das notas
+
+
 [inicio_small]: screenshots/inicio_small.png
 [nova_nota_small]: screenshots/nova_nota_small.png
 [filtrar_small]: screenshots/filtrar_small.png
