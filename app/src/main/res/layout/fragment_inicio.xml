@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".ui.InicioFragment" >
 
-    <!--
     <com.ogaclejapan.smarttablayout.SmartTabLayout
         android:id="@+id/smartTabLayout"
         android:layout_width="match_parent"
@@ -43,37 +42,7 @@
 
         app:stl_clickable="true"
         app:stl_titleOffset="24dp"
-        app:stl_drawDecorationAfterTab="false"
-        />
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/smartTabLayout"
-        />
-        -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/buttonAbaNotas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:text="Notas" />
-
-        <Button
-            android:id="@+id/buttonAbaLembretes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:text="Lembretes" />
-    </LinearLayout>
+        app:stl_drawDecorationAfterTab="false" />
 
     <TextView
         android:id="@+id/textPesquisa"
@@ -88,11 +57,9 @@
         android:text="Pesquisa:"
         android:textSize="12sp" />
 
-    <FrameLayout
-        android:id="@+id/frameConteudo"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </FrameLayout>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

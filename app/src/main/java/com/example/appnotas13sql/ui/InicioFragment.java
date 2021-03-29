@@ -39,7 +39,6 @@ import java.util.List;
 
 public class InicioFragment extends Fragment {
 
-    private Button buttonAbaNotas, buttonAbaLembretes;
     private TextView textPesquisa;
     private ArmazenamentoPreferencias preferencias;
 
@@ -53,27 +52,21 @@ public class InicioFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
 
-        buttonAbaNotas = view.findViewById(R.id.buttonAbaNotas);
-        buttonAbaLembretes = view.findViewById(R.id.buttonAbaLembretes);
         textPesquisa = view.findViewById(R.id.textPesquisa);
 
         preferencias = new ArmazenamentoPreferencias(getActivity());
 
-        buttonAbaNotas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frameConteudo, new NotasFragment()).commit();
-            }
-        });
+        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
+                getActivity().getSupportFragmentManager(),
+                FragmentPagerItems.with(getActivity())
+                .add("Notas", NotasFragment.class)
+                .add("Lembretes", LembretesFragment.class)
+                .create());
+        ViewPager viewPager = view.findViewById(R.id.viewPager);
+        viewPager.setAdapter(adapter);
 
-        buttonAbaLembretes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frameConteudo, new LembretesFragment()).commit();
-            }
-        });
+        SmartTabLayout smartTabLayout = view.findViewById(R.id.smartTabLayout);
+        smartTabLayout.setViewPager(viewPager);
 
         return view;
     }
@@ -81,14 +74,19 @@ public class InicioFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frameConteudo, new NotasFragment()).commit();
 
         textPesquisa.setVisibility(View.GONE);
         if (!preferencias.getPesquisa().equals("")) {
             textPesquisa.setVisibility(View.VISIBLE);
             textPesquisa.setText("Pesquisa: " + preferencias.getPesquisa());
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        //Toast.makeText(getActivity(), "onPause", Toast.LENGTH_SHORT).show();
+        onDetach();
     }
 
     @Override
